@@ -6,13 +6,13 @@ namespace ConsoleTime
 {
     public class ConsoleClock
     {
-        public ConsoleClock(string input)
+        public ConsoleClock(string inputDate, ClockPosition pos = ClockPosition.Left)
         {
-            if(!DateTimeParser.TryParse(input, out var initialTime))
+            if(!DateTimeParser.TryParse(inputDate, out var initialTime))
             {
                 throw new FormatException("Invalid initial time format. Supported format: \"YYYY/MM/DD hh:mm:ss\"");
             }
-            ClockDriver clock = new ClockDriver(initialTime);
+            ClockDriver clock = new ClockDriver(initialTime, pos);
             clock.Start();
         }
     }
